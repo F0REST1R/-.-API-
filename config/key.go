@@ -8,8 +8,9 @@ import (
 )
 
 type Key struct {
-	YaMapsAPIKeyGeo string
-	YaMapsAPIKeyMap string
+	YaMapsAPIKeyGeo     string
+	YaMapsAPIKeyMap     string
+	YaMapsAPIKeyLocator string
 }
 
 var apiKeys = initKeys()
@@ -20,11 +21,8 @@ func initKeys() Key {
 	return k
 }
 
-func (k *Key) init() (string, string) {
+func (k *Key) init() {
 	// Загружаем .env файл
-
-	
-
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
@@ -32,12 +30,12 @@ func (k *Key) init() (string, string) {
 	// Получаем значения из переменных окружения
 	k.YaMapsAPIKeyGeo = getEnv("YA_MAPS_API_KEY_GEO", "")
 	k.YaMapsAPIKeyMap = getEnv("YA_MAPS_API_KEY_MAP", "")
+	k.YaMapsAPIKeyLocator = getEnv("YA_MAPS_API_KEY_LOCATOR", "")
 
 	// Проверяем обязательные переменные
-	if k.YaMapsAPIKeyGeo == "" || k.YaMapsAPIKeyMap == "" {
+	if k.YaMapsAPIKeyGeo == "" || k.YaMapsAPIKeyMap == "" || k.YaMapsAPIKeyLocator == "" {
 		log.Fatal("API keys not set in .env file")
 	}
-	return k.YaMapsAPIKeyGeo, k.YaMapsAPIKeyMap
 }
 
 func getEnv(key, defaultValue string) string {
@@ -58,3 +56,4 @@ func GetAPIGeo() string {
 func GetAPIMap() string {
 	return apiKeys.YaMapsAPIKeyMap
 }
+
