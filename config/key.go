@@ -57,3 +57,6 @@ func GetAPIMap() string {
 	return apiKeys.YaMapsAPIKeyMap
 }
 
+func GetAPILocator() string {
+	return apiKeys.YaMapsAPIKeyLocator
+}

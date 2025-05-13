@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Print("Выберите что вы хотите проверить:\n1. Создание карты\n2. Проверка геообратное кодирование\n\n")
+	fmt.Print("Выберите что вы хотите проверить:\n1. Создание карты\n2. Проверка геообратное кодирование\n3. Кластеризация точек\n\n")
 	var number int 
 	fmt.Scan(&number)
 	switch number {
@@ -14,5 +14,7 @@ func main() {
 			examples.ExamplMaps()
 		case 2:
 			examples.RunGeocodingExample()
+		case 3:
+			examples.Cluster()
 	}
 }

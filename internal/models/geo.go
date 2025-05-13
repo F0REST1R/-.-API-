@@ -20,3 +20,8 @@ type Address struct {
     PostalCode   string `json:"postal_code"`
     Description  string `json:"description"`  // Название объекта (для Кремля и др.)
 }
+
+type Cluster struct {
+    Center GeoPoint   `json:"center"`
+    Points []GeoPoint `json:"points"`
+}
