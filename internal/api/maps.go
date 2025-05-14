@@ -8,7 +8,7 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-
+//Для генерации карт
 func (c *YaMapsClient) GenerateStaticMap(center models.GeoPoint, zoom int, size models.MapSize, markers []models.Marker) ([]byte, error) {
     client := resty.New()
     

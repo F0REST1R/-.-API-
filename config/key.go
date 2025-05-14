@@ -3,7 +3,6 @@ package config
 import (
 	"log"
 	"os"
-
 	"github.com/joho/godotenv"
 )
 
@@ -52,6 +51,7 @@ func getEnv(key, defaultValue string) string {
 func GetAPIGeo() string {
 	return apiKeys.YaMapsAPIKeyGeo
 }
+//....Остальные вызовы ключей
 
 func GetAPIMap() string {
 	return apiKeys.YaMapsAPIKeyMap

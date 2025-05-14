@@ -31,6 +31,7 @@ func NewGeocodeClient() *GeocodeClient {
     }
 }
 
+// Геообратное кодирование
 func (c *GeocodeClient) ReverseGeocode(lat, lon float64) (*models.Address, error) {
     resp, err := c.client.R().
         SetQueryParams(map[string]string{

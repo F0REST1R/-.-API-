@@ -27,6 +27,7 @@ func NewYaMapsClient() *YaMapsClient {
 	}
 }
 
+//Геокодирование
 func (c *YaMapsClient) Geocode(address string) (float64, float64, error) {
     resp, err := c.geocoderClient.R().
         SetQueryParams(map[string]string{

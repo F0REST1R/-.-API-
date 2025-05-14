@@ -12,6 +12,7 @@ import (
     "github.com/go-resty/resty/v2"
 )
 
+//реализует взаимодействие с API
 type LocatorClient struct {
     client *resty.Client
     apiKey string
@@ -33,13 +34,14 @@ type ErrorResponse struct {
     Message string   `xml:"message"`
 }
 
+//Получение POI
 func (c *LocatorClient) GetPOI(lat, lon float64, radius int, category string) ([]models.GeoPoint, error) {
     resp, err := c.client.R().
         SetQueryParams(map[string]string{
             "apikey":  c.apiKey,
             "text":    url.QueryEscape(category),
             "ll":      fmt.Sprintf("%f,%f", lon, lat),
-            "spn":     fmt.Sprintf("%f,%f", 0.05, 0.05),
+            "spn":     fmt.Sprintf("%f,%f", 1, 1),
             "rspn":    "1",
             "lang":    "ru_RU",
             "results": "100",
